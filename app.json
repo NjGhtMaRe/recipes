@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "recipes",
-    "slug": "recipes",
+    "name": "Recipes",
+    "slug": "Recipes",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
