@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     },
     header: {
         marginTop: 100,
+        padding: 15,
     },
     logo: {
         width: 80,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontWeight: '500',
-        fontSize: 18,
+        fontSize: 14,
         color: 'white',
         alignSelf: 'center'
     }

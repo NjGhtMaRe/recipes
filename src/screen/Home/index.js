@@ -5,15 +5,19 @@ import styles from "./styles";
 
 const Home = () => {
     return (
-        <View style={styles.container}>
-            <ImageBackground style={styles.background} source={require('../../../assets/splash.png')}>
-                <View style={styles.header}>
+        <ImageBackground style={styles.background} source={require('../../../assets/splash.png')}>
+            <View style={styles.header}>
+                <View>
                     <Image style={styles.logo} source={require('../../../assets/logo.png')} />
                     <Text style={styles.text}>100K+ Premium Recipes</Text>
                 </View>
+                <View>
+                    <Text style={styles.text}>100K+ Premium Recipes</Text>
+                    <Text style={styles.text}>100K+ Premium Recipes</Text>
+                </View>
                 <Button>Start Cooking</Button>
-            </ImageBackground>
-        </View>
+            </View>
+        </ImageBackground>
     )
 };
 
