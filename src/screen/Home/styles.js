@@ -1,30 +1,48 @@
-import { StyleSheet, Dimensions } from "react-native";
-
-const {width, height} = Dimensions.get('window')
+import { StyleSheet } from "react-native";
+import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-    },
     background: {
-        width: width,
-        height: height,
+        width: '100%',
+        height: '100%',
+        // flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
-    header: {
-        marginTop: 100,
+    container: {
+        flex: 1,
+    },
+    body: {
+        marginTop: 200,
         padding: 15,
+        flex: 1,
     },
     logo: {
         width: 80,
         height: 80,
         alignSelf: 'center'
     },
-    text: {
-        fontWeight: '500',
-        fontSize: 14,
+    title: {
+        fontWeight: '700',
+        fontSize: 18,
         color: 'white',
-        alignSelf: 'center'
-    }
+        textAlign: 'center'
+    },
+    bigTitle: {
+        fontWeight: '500',
+        fontSize: 56,
+        color: colors.white,
+        textAlign: 'center'
+    },
+    subtitle: {
+        marginTop: 30,
+        marginBottom: 30,
+        fontWeight: '500',
+        fontSize: 18,
+        color: 'white',
+        textAlign: 'center'
+    },
 });
 
 export default styles;

@@ -8,17 +8,16 @@ const styles = StyleSheet.create({
         backgroundColor: colors.green,
         width: '80%',
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
         borderRadius: 10,
-        alignSelf: 'center',
         padding: 10,
+        alignSelf: 'center',
+        paddingHorizontal: 50,
+
     },
     text: {
         color: colors.white,
         fontSize: 16,
         fontWeight: '500',
-        alignSelf: 'center'
     },
     icon : {
         width: 24,

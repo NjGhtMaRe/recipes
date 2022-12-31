@@ -6,17 +6,17 @@ import styles from "./styles";
 const Home = () => {
     return (
         <ImageBackground style={styles.background} source={require('../../../assets/splash.png')}>
-            <View style={styles.header}>
-                <View>
-                    <Image style={styles.logo} source={require('../../../assets/logo.png')} />
-                    <Text style={styles.text}>100K+ Premium Recipes</Text>
-                </View>
-                <View>
-                    <Text style={styles.text}>100K+ Premium Recipes</Text>
-                    <Text style={styles.text}>100K+ Premium Recipes</Text>
-                </View>
+            <View style={styles.container}>
+                <Image style={styles.logo} source={require('../../../assets/logo.png')} />
+                <Text style={styles.title}>100K+ Premium Recipes</Text>
+            </View>
+            <View style={styles.container}>
+                <Text style={styles.bigTitle}>Get</Text>
+                <Text style={styles.bigTitle}>Cooking</Text>
+                <Text style={styles.subtitle}>Simple way to find Tasty Recipe</Text>
                 <Button>Start Cooking</Button>
             </View>
+
         </ImageBackground>
     )
 };

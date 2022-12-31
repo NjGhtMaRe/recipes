@@ -4,7 +4,7 @@ import Home from "./src/screen/Home";
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View>
       <Home />
     </View>
   );
