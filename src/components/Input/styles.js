@@ -5,23 +5,21 @@ const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.green,
+    borderWidth: 1,
+    borderRadius: 12,
     flexDirection: 'row',
-    borderRadius: 10,
-    padding: 14,
-    alignSelf: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 40,
-
-  },
-  text: {
-    color: colors.white,
-    fontSize: 16,
-    fontWeight: '500',
+    marginVertical: 16,
+    paddingVertical: 10,
+    borderColor: colors.lightGrey,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 16,
+    height: 16,
+    marginLeft: 14,
+  },
+  input: {
+    color: colors.black,
+    fontSize: 12,
     marginLeft: 12,
   },
 });
