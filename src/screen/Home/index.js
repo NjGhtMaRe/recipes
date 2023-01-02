@@ -4,14 +4,14 @@ import {
 } from 'react-native';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Title from '../../components/Title';
 import styles from './styles';
 
 function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={{ textAlign: 'center' }}>HOME</Text>
-      <Text style={{ textAlign: 'center' }} onPress={() => navigation.navigate('Search')}>Go to search</Text>
-      <Input />
+      <Input pressable onPress={() => navigation.navigate('Search')} />
+      <Title text="Feature Recipes" />
     </View>
   );
 }
