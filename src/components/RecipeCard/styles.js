@@ -2,10 +2,63 @@ import { StyleSheet } from 'react-native';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 16,
+  container: {
+    borderWidth: 1,
+    width: '70%',
+    marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    borderRadius: 10,
+    borderColor: colors.lightGrey,
+    paddingHorizontal: 8,
+  },
+  firstLine: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  secondLine: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  title: {
+    fontSize: 14,
     fontWeight: 'bold',
     color: colors.black,
+    flex: 1,
+  },
+  text: {
+    fontSize: 12,
+    color: colors.grey,
+  },
+  image: {
+    width: 80,
+    height: 80,
+    marginTop: -40,
+    borderRadius: 40,
+  },
+  authorImage: {
+    width: 20,
+    height: 20,
+    borderRadius: 15,
+    marginRight: 6,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 6,
   },
 });
 
