@@ -1,11 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../../constants/colors';
 
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    width: '70%',
-    marginTop: 20,
+    width: width * 0.63,
+    marginTop: 30,
+    marginRight: 16,
+    marginBottom: 16,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -14,8 +16,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
     borderRadius: 10,
-    borderColor: colors.lightGrey,
-    paddingHorizontal: 8,
+    backgroundColor: colors.white,
+    padding: 10,
   },
   firstLine: {
     flexDirection: 'row',
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginVertical: 6,
   },
   row: {
     flexDirection: 'row',
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     flex: 1,
   },
+
   text: {
     fontSize: 12,
     color: colors.grey,

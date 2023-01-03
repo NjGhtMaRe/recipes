@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  FlatList,
   Image, ImageBackground, Text, View,
 } from 'react-native';
 import Button from '../../components/Button';
@@ -13,7 +14,16 @@ function Home({ navigation }) {
     <View style={styles.container}>
       <Input pressable onPress={() => navigation.navigate('Search')} />
       <Title text="Feature Recipes" />
-      <RecipeCard />
+      <FlatList
+        data={[1, 2, 3]}
+        showsHorizontalScrollIndicator={false}
+        style={styles.recipes}
+        horizontal
+        keyExtractor={(item) => String(item)}
+        renderItem={({ index }) => (
+          <RecipeCard style={index === 0 ? { marginLeft: 24 } : {}} />
+        )}
+      />
     </View>
   );
 }

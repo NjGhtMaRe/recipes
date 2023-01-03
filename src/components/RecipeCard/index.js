@@ -2,21 +2,25 @@ import React from 'react';
 import {
   Image, RecyclerViewBackedScrollViewComponent, Text, View,
 } from 'react-native';
+import Rating from '../Rating';
 import styles from './styles';
 
 function RecipeCard({
-  title, author, image, rating, time,
+  title, author, image, rating, time, style,
 }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.firstLine}>
-        <Text numberOfLines={1} style={styles.title}>{title}</Text>
+        <View style={{ flex: 1 }}>
+          <Text numberOfLines={1} style={styles.title}>{title}</Text>
+          <Rating style={styles.rating} rating={4.5} />
+        </View>
         <Image style={styles.image} source={{ uri: image }} />
       </View>
       <View style={styles.secondLine}>
         <View style={styles.row}>
           <Image style={styles.authorImage} source={{ uri: author.image }} />
-          <Text style={styles.text}>{`By ${author.name}`}</Text>
+          <Text style={styles.text}>{`By ${author?.name}`}</Text>
         </View>
         <View style={styles.row}>
           <Image style={styles.icon} source={require('../../../assets/timer.png')} />
