@@ -5,14 +5,14 @@ import styles from './styles';
 function Rating({ rating }) {
   const arr = [1, 2, 3, 4, 5];
 
-  const renderStars = () => arr?.map((star) => {
+  const renderStars = () => arr?.map((star, index) => {
     if (Math.round(rating) >= star) {
       return (
-        <Image style={styles.star} source={require('../../../assets/star.png')} />
+        <Image key={index} style={styles.star} source={require('../../../assets/star.png')} />
       );
     }
     return (
-      <Image style={styles.star} source={require('../../../assets/starEmpty.png')} />
+      <Image key={index} style={styles.star} source={require('../../../assets/starEmpty.png')} />
     );
   });
 

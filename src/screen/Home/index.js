@@ -10,6 +10,7 @@ import Input from '../../components/Input';
 import RecipeCard from '../../components/RecipeCard';
 import Title from '../../components/Title';
 import styles from './styles';
+import Card from '../../components/Card';
 
 function Home({ navigation }) {
   const [category, setCategory] = useState(categoriesList);
@@ -29,7 +30,19 @@ function Home({ navigation }) {
           <RecipeCard style={index === 0 ? { marginLeft: 24 } : {}} />
         )}
       />
-      <Categories category={category} selectedCategory={selectedCategory} onCategoryPress={setSelectedCategory} />
+      <View style={styles.category}>
+        <Categories category={category} selectedCategory={selectedCategory} onCategoryPress={setSelectedCategory} />
+      </View>
+      <FlatList
+        data={[1, 2, 3]}
+        showsHorizontalScrollIndicator={false}
+        style={styles.card}
+        horizontal
+        keyExtractor={(item) => String(item)}
+        renderItem={({ index }) => (
+          <Card style={index === 0 ? { marginLeft: 24 } : {}} />
+        )}
+      />
     </View>
   );
 }

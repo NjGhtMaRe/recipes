@@ -17,7 +17,7 @@ function Categories({ category, selectedCategory, onCategoryPress }) {
         return (
           <TouchableOpacity
             onPress={() => { onCategoryPress(item); }}
-            style={[styles.container, selected ? styles.selectedContainer : {}]}
+            style={[styles.container, selected ? styles.selectedContainer : {}, index === 0 ? { marginLeft: 24 } : {}]}
           >
             <Text style={[styles.text, selected ? styles.selectedText : {}]}>{item}</Text>
           </TouchableOpacity>

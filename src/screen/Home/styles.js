@@ -8,6 +8,12 @@ const styles = StyleSheet.create({
   recipes: {
     marginHorizontal: -24,
   },
+  card: {
+    marginHorizontal: -24,
+  },
+  category: {
+    marginHorizontal: -24,
+  },
 });
 
 export default styles;

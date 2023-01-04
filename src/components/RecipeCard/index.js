@@ -39,7 +39,7 @@ RecipeCard.defaultProps = {
     image: 'https://media.cnn.com/api/v1/images/stellar/prod/140911162843-jk-rowling.jpg?q=w_3000,h_1996,x_0,y_0,c_fill',
   },
   rating: '1',
-  time: '20mins',
+  time: '20 mins',
 };
 
 export default React.memo(RecipeCard);
