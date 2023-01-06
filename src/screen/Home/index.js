@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   FlatList,
   Image, ImageBackground, Text, View,
@@ -11,10 +11,14 @@ import RecipeCard from '../../components/RecipeCard';
 import Title from '../../components/Title';
 import styles from './styles';
 import Card from '../../components/Card';
+import { RecipesContext } from '../../../App';
 
 function Home({ navigation }) {
+  const { recipes } = useContext(RecipesContext);
   const [category, setCategory] = useState(categoriesList);
   const [selectedCategory, setSelectedCategory] = useState(category[0]);
+
+  console.log('recipes Home: ', recipes);
 
   return (
     <View style={styles.container}>

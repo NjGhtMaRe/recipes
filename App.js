@@ -2,11 +2,14 @@ import 'react-native-gesture-handler';
 import { Image, Pressable, StyleSheet } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import React, { useEffect, useState } from 'react';
 import Splash from './src/screen/Splash';
 import Home from './src/screen/Home';
 import Search from './src/screen/Search';
+import { getRecipesList } from './src/components/http';
 
 const Stack = createStackNavigator();
+export const RecipesContext = React.createContext();
 
 function BackButton(props) {
   return (
@@ -25,14 +28,30 @@ const theme = {
 };
 
 export default function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    handleRecipesFetch();
+  }, []);
+
+  const handleRecipesFetch = async () => {
+    try {
+      const getRecipes = await getRecipesList();
+      setRecipes(getRecipes?.data?.results);
+    } catch (e) {
+      console.log('error fetch: ', e);
+    }
+  };
   return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator screenOptions={{ headerTitleAlign: 'center', headerShadowVisible: false }}>
-        <Stack.Screen name="Splash" options={{ headerShown: false }} component={Splash} />
-        <Stack.Screen name="Home" component={Home} options={{ headerLeft: null, gestureEnabled: false }} />
-        <Stack.Screen name="Search" component={Search} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RecipesContext.Provider value={{ recipes, setRecipes }}>
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator screenOptions={{ headerTitleAlign: 'center', headerShadowVisible: false }}>
+          <Stack.Screen name="Splash" options={{ headerShown: false }} component={Splash} />
+          <Stack.Screen name="Home" component={Home} options={{ headerLeft: null, gestureEnabled: false }} />
+          <Stack.Screen name="Search" component={Search} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecipesContext.Provider>
   );
 }
 const styles = StyleSheet.create({
