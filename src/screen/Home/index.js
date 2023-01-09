@@ -11,27 +11,36 @@ import RecipeCard from '../../components/RecipeCard';
 import Title from '../../components/Title';
 import styles from './styles';
 import Card from '../../components/Card';
-import { RecipesContext } from '../../../App';
+import { HealthyRecipesContext, RecipesContext } from '../../../App';
 
 function Home({ navigation }) {
   const { recipes } = useContext(RecipesContext);
+  const { healthyRecipes } = useContext(HealthyRecipesContext);
   const [category, setCategory] = useState(categoriesList);
   const [selectedCategory, setSelectedCategory] = useState(category[0]);
 
   console.log('recipes Home: ', recipes);
+  console.log('healthyRecipes: ', healthyRecipes);
 
   return (
     <View style={styles.container}>
       <Input pressable onPress={() => navigation.navigate('Search')} />
       <Title text="Feature Recipes" />
       <FlatList
-        data={[1, 2, 3]}
+        data={healthyRecipes}
         showsHorizontalScrollIndicator={false}
         style={styles.recipes}
         horizontal
         keyExtractor={(item) => String(item)}
-        renderItem={({ index }) => (
-          <RecipeCard style={index === 0 ? { marginLeft: 24 } : {}} />
+        renderItem={({ item, index }) => (
+          <RecipeCard
+            title={item?.name}
+            image={item?.thumbnail_url}
+            author={item?.credits?.length ? { name: item?.credits[0]?.name, image: item?.credits[0]?.image_url } : null}
+            rating={item?.user_ratings?.score}
+            time={item?.cooking_time_minutes}
+            style={index === 0 ? { marginLeft: 24 } : {}}
+          />
         )}
       />
       <View style={styles.category}>

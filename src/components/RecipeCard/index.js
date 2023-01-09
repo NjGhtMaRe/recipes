@@ -13,7 +13,7 @@ function RecipeCard({
       <View style={styles.firstLine}>
         <View style={{ flex: 1 }}>
           <Text numberOfLines={1} style={styles.title}>{title}</Text>
-          <Rating style={styles.rating} rating={4.5} />
+          <Rating style={styles.rating} rating={rating} />
         </View>
         <Image style={styles.image} source={{ uri: image }} />
       </View>

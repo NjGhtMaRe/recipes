@@ -10,6 +10,7 @@ import { getRecipesList } from './src/components/http';
 
 const Stack = createStackNavigator();
 export const RecipesContext = React.createContext();
+export const HealthyRecipesContext = React.createContext();
 
 function BackButton(props) {
   return (
@@ -29,29 +30,37 @@ const theme = {
 
 export default function App() {
   const [recipes, setRecipes] = useState([]);
+  const [healthyRecipes, setHealthyRecipes] = useState([]);
 
   useEffect(() => {
-    handleRecipesFetch();
+    (async () => {
+      const rec = await handleRecipesFetch();
+      setRecipes(rec);
+      const healthyRec = await handleRecipesFetch('healthy', '5');
+      setHealthyRecipes(healthyRec);
+    })();
   }, []);
 
-  const handleRecipesFetch = async () => {
+  const handleRecipesFetch = async (tags, size) => {
     try {
-      const getRecipes = await getRecipesList();
-      setRecipes(getRecipes?.data?.results);
+      const getRecipes = await getRecipesList(tags, size);
+      return getRecipes?.data?.results;
     } catch (e) {
       console.log('error fetch: ', e);
     }
   };
   return (
-    <RecipesContext.Provider value={{ recipes, setRecipes }}>
-      <NavigationContainer theme={theme}>
-        <Stack.Navigator screenOptions={{ headerTitleAlign: 'center', headerShadowVisible: false }}>
-          <Stack.Screen name="Splash" options={{ headerShown: false }} component={Splash} />
-          <Stack.Screen name="Home" component={Home} options={{ headerLeft: null, gestureEnabled: false }} />
-          <Stack.Screen name="Search" component={Search} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </RecipesContext.Provider>
+    <HealthyRecipesContext.Provider value={{ healthyRecipes, setHealthyRecipes }}>
+      <RecipesContext.Provider value={{ recipes, setRecipes }}>
+        <NavigationContainer theme={theme}>
+          <Stack.Navigator screenOptions={{ headerTitleAlign: 'center', headerShadowVisible: false }}>
+            <Stack.Screen name="Splash" options={{ headerShown: false }} component={Splash} />
+            <Stack.Screen name="Home" component={Home} options={{ headerLeft: null, gestureEnabled: false }} />
+            <Stack.Screen name="Search" component={Search} options={{ headerLeft: (props) => <BackButton {...props} /> }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </RecipesContext.Provider>
+    </HealthyRecipesContext.Provider>
   );
 }
 const styles = StyleSheet.create({
