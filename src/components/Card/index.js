@@ -9,10 +9,12 @@ function Card({
     <View style={[styles.container, style]}>
       <Image style={styles.image} source={{ uri: image }} />
       <Text numberOfLines={3} style={styles.title}>{title}</Text>
-      <View>
-        <Text style={styles.timeText}>Time</Text>
-        <Text style={[styles.title, { fontSize: 12, textAlign: 'left' }]}>{time}</Text>
-      </View>
+      {time ? (
+        <View>
+          <Text style={styles.timeText}>Time</Text>
+          <Text style={[styles.title, { fontSize: 12, textAlign: 'left' }]}>{time}</Text>
+        </View>
+      ) : <View />}
     </View>
   );
 }
@@ -25,7 +27,6 @@ Card.defaultProps = {
     image: 'https://media.cnn.com/api/v1/images/stellar/prod/140911162843-jk-rowling.jpg?q=w_3000,h_1996,x_0,y_0,c_fill',
   },
   rating: '1',
-  time: '20 mins',
 };
 
 export default React.memo(Card);

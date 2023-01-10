@@ -16,10 +16,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: colors.green,
+    textTransform: 'capitalize',
   },
   selectedText: {
     color: colors.white,
     fontWeight: '500',
+    textTransform: 'capitalize',
+
   },
 });
 

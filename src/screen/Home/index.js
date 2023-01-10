@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   FlatList,
   Image, ImageBackground, Text, View,
@@ -16,11 +16,30 @@ import { HealthyRecipesContext, RecipesContext } from '../../../App';
 function Home({ navigation }) {
   const { recipes } = useContext(RecipesContext);
   const { healthyRecipes } = useContext(HealthyRecipesContext);
+  const [tags, setTags] = useState([]);
   const [category, setCategory] = useState(categoriesList);
-  const [selectedCategory, setSelectedCategory] = useState(category[0]);
-
+  const [selectedCategory, setSelectedCategory] = useState(ALL);
+  const ALL = 'All';
   console.log('recipes Home: ', recipes);
   console.log('healthyRecipes: ', healthyRecipes);
+  console.log('tagsList: ', tags);
+
+  useEffect(() => {
+    const tagsList = [];
+    recipes.forEach((recipe) => {
+      recipe?.tags?.forEach((tag) => {
+        if (!tagsList?.includes(tag.name)) {
+          tagsList?.push(tag.name);
+        }
+      });
+    });
+    setTags(tagsList);
+    setCategory([ALL, ...tags]);
+  }, [recipes]);
+
+  // useEffect(() => {
+  //   setCategory([ALL, ...tags]);
+  // }, [recipes]);
 
   return (
     <View style={styles.container}>
@@ -31,7 +50,7 @@ function Home({ navigation }) {
         showsHorizontalScrollIndicator={false}
         style={styles.recipes}
         horizontal
-        keyExtractor={(item) => String(item)}
+        keyExtractor={(item) => String(item?.id)}
         renderItem={({ item, index }) => (
           <RecipeCard
             title={item?.name}
@@ -47,13 +66,18 @@ function Home({ navigation }) {
         <Categories category={category} selectedCategory={selectedCategory} onCategoryPress={setSelectedCategory} />
       </View>
       <FlatList
-        data={[1, 2, 3]}
+        data={recipes}
         showsHorizontalScrollIndicator={false}
         style={styles.card}
         horizontal
-        keyExtractor={(item) => String(item)}
-        renderItem={({ index }) => (
-          <Card style={index === 0 ? { marginLeft: 24 } : {}} />
+        keyExtractor={(item) => String(item?.id)}
+        renderItem={({ item, index }) => (
+          <Card
+            style={index === 0 ? { marginLeft: 24 } : {}}
+            image={item?.thumbnail_url}
+            title={item?.name}
+            time={item?.cooking_time_minutes}
+          />
         )}
       />
     </View>
